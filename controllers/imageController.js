@@ -58,7 +58,7 @@ exports.uploadImage = async (req, res) => {
       const currentTime = Date.now();
       const newImage = await Image.create({
         image: req.file.filename,
-        originalName: req.file.originalname,
+        originalName: req?.body["image-name"] || req.file.originalname,
         path: `/images/${req.file.filename}`,
         lastUpdatedTime: currentTime,
         createdTime: currentTime,
